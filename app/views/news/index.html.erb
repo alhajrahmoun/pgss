@@ -1,0 +1,6 @@
+<% @news.each do |news| %>
+    <h3><%= news.title %></h3>
+    <p><%= image_tag news.image, size: "100x100" %></p>
+    <%= news.description %>
+    <hr>
+<% end %>
