@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'news#index'
   resources :news
 
   namespace :api do 
