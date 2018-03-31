@@ -19,7 +19,7 @@ Trestle.resource(:news) do
      text_field :title
      text_area :description
      datetime_field :created_at
-     form_group :image, help: "Upload a file less than 2MB." do
+     form_group :image, help: "Upload an image.." do
       concat image_tag(news.image.url, size: '100x100') unless news.image.blank?
       raw_file_field :image
     end

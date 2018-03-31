@@ -4,11 +4,11 @@ class Api::CoursesController < ApplicationController
     end
 
     def search 
-        courses = Course.by_city(params[:city]).
-                         by_study_mode(params[:study_mode]).
-                         by_course_type(params[:course_type]).
-                         by_degree(params[:degree]).
-                         by_university(params[:university]).to_json(:include => { :degree => { :only => :name },
+        courses = Course.by_city(params[:city].split(',')).
+                         by_study_mode(params[:study_mode].split(',')).
+                         by_course_type(params[:course_type].split(',')).
+                         by_degree(params[:degree].split(',')).
+                         by_university(params[:university].split(',')).to_json(:include => { :degree => { :only => :name },
                                                                                   :course_type => { :only => :name },
                                                                                   :university => {:only => [:name, :university_type]} })
         final_courses = JSON.parse(courses)
