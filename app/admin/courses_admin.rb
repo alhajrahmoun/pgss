@@ -1,29 +1,27 @@
-Trestle.resource(:news) do
+Trestle.resource(:courses) do
   menu do
-    item :news, icon: "fa fa-star"
+    item :courses, icon: "fa fa-star"
   end
 
   # Customize the table columns shown on the index view.
   #
    table do
      column :id
-     column :title
-     column :description
+     column :name
      column :created_at, align: :center
-     column (:image) { |i| image_tag(i.image.url, size: '100x100') unless i.image.blank? }
      actions
    end
 
   # Customize the form fields shown on the new/edit views.
   #
-   form do |news|
-     text_field :title
-     text_area :description
+   form do |course|
+     text_field :name
+     select :city, ["Kuala Lampur", "", ""], label: "Select a city"
+     select :study_mode, ["Full Time", "Part Time"], label: "Select a study mode"
      datetime_field :created_at
-     form_group :image, help: "Upload an image.." do
-      concat image_tag(news.image.url, size: '100x100') unless news.image.blank?
-      raw_file_field :image
-    end
+     collection_select :course_type_id, CourseType.all, :id, :name, label: "Select a Course Type"
+     collection_select :degree_id, Degree.all, :id, :name, label: "Select a Degree"
+     collection_select :university_id, University.all, :id, :name, label: "Select a University"
   #
   #   row do
   #     col(xs: 6) { datetime_field :updated_at }
@@ -39,6 +37,6 @@ Trestle.resource(:news) do
   #   http://guides.rubyonrails.org/action_controller_overview.html#strong-parameters
   #
   # params do |params|
-  #   params.require(:news).permit(:name, ...)
+  #   params.require(:course).permit(:name, ...)
   # end
 end
