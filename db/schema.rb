@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403121658) do
+ActiveRecord::Schema.define(version: 20180406185633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "course_types", force: :cascade do |t|
     t.string "name"
@@ -23,13 +29,14 @@ ActiveRecord::Schema.define(version: 20180403121658) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
-    t.string "city"
     t.string "study_mode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "course_type_id"
     t.bigint "degree_id"
     t.bigint "university_id"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_courses_on_city_id"
     t.index ["course_type_id"], name: "index_courses_on_course_type_id"
     t.index ["degree_id"], name: "index_courses_on_degree_id"
     t.index ["university_id"], name: "index_courses_on_university_id"
@@ -62,6 +69,7 @@ ActiveRecord::Schema.define(version: 20180403121658) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "courses", "cities"
   add_foreign_key "courses", "course_types"
   add_foreign_key "courses", "degrees"
   add_foreign_key "courses", "universities"

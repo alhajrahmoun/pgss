@@ -2,6 +2,7 @@ class Course < ApplicationRecord
     belongs_to :degree
     belongs_to :university
     belongs_to :course_type
+    belongs_to :city
 
     
     scope :by_city, -> (city) { where(city: city) } 
