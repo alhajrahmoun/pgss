@@ -9,6 +9,7 @@ class Api::CoursesController < ApplicationController
                          by_course_type(params[:course_type].split(',')).
                          by_degree(params[:degree].split(',')).
                          by_university(params[:university].split(',')).to_json(:include => { :degree => { :only => :name },
+                                                                                  :city => { :only => :name },
                                                                                   :course_type => { :only => :name },
                                                                                   :university => {:only => [:name, :university_type]} })
         final_courses = JSON.parse(courses)
