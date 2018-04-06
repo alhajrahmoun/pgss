@@ -16,8 +16,9 @@ Trestle.resource(:courses) do
   #
    form do |course|
      text_field :name
-     select :city, ["Kuala Lampur", "", ""], label: "Select a city"
-     select :study_mode, ["Full Time", "Part Time"], label: "Select a study mode"
+     select :city, ["kuala lampur", "", ""], label: "Select a city"
+     text_field :city
+     select :study_mode, ["full time", "part time"], label: "Select a study mode"
      datetime_field :created_at
      collection_select :course_type_id, CourseType.all, :id, :name, label: "Select a Course Type"
      collection_select :degree_id, Degree.all, :id, :name, label: "Select a Degree"
