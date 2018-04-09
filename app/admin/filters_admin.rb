@@ -15,7 +15,7 @@ Trestle.resource(:filters) do
   #
    form do |filter|
      text_field :name
-     select :filter_type, ["course_type", "degree", 'university','study_mode'], label: "Select a filter type"
+     select :filter_type, ['study_mode'], label: "Select a filter type"
   #
   #   row do
   #     col(xs: 6) { datetime_field :updated_at }
