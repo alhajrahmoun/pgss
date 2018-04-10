@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-    validates :email, uniqueness: { message: 'Email already exists' }
+    validates :email, uniqueness:  {message: 'already exists' }
 end

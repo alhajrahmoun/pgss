@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
                 message: ["successful"]
             }.to_json 
         else
-            render json: @user.errors.to_json
+            render json: {message: @user.errors.to_a }
         end
     end
 
