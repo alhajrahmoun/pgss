@@ -6,9 +6,7 @@ class Api::UsersController < ApplicationController
                 message: ["successful"]
             }.to_json 
         else
-            render status: 401, json:{
-                error: ["bad request"]
-            }.to_json
+            render json: @user.errors.to_json
         end
     end
 
