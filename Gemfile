@@ -37,6 +37,8 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 gem 'trestle'
+gem 'trestle-auth'
+
 
 
 group :development, :test do
