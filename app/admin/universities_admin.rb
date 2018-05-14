@@ -10,6 +10,7 @@ Trestle.resource(:universities) do
      column :name
      column :university_type
      column :created_at, align: :center
+     column :updated_at, align: :center
      actions
    end
 

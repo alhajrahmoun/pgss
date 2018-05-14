@@ -9,6 +9,7 @@ Trestle.resource(:courses) do
      column :id
      column :name
      column :created_at, align: :center
+     column :updated_at, align: :center
      actions
    end
 
@@ -16,6 +17,7 @@ Trestle.resource(:courses) do
   #
    form do |course|
      text_field :name
+     text_field :description
      select :study_mode, Filter.where(filter_type: 'study_mode'), label: "Select a study mode"
      datetime_field :created_at
      collection_select :city_id, City.all, :id, :name, label: "Select a City"

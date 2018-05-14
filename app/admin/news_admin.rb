@@ -10,6 +10,7 @@ Trestle.resource(:news) do
      column :title
      column :description
      column :created_at, align: :center
+     column :updated_at, align: :center
      column (:image) { |i| image_tag(i.image.url, size: '100x100') unless i.image.blank? }
      actions
    end

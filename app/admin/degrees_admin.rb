@@ -9,6 +9,7 @@ Trestle.resource(:degrees) do
      column :id
      column :name
      column :created_at, align: :center
+     column :updated_at, align: :center
      actions
    end
 
