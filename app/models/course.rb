@@ -6,7 +6,7 @@ class Course < ApplicationRecord
 
     
     scope :by_city, -> (city) { joins(:city).where("cities.name IN (?)", city) } 
-    scope :by_study_mode, -> (study_mode) { where(study_mode: study_mode) }
+    scope :by_study_mode, -> (study_mode) { joins(:filter).where("filters.name IN (?)", study_mode) }
     scope :by_course_type, -> (name) { joins(:course_type).where("course_types.name IN (?)", name)}
     scope :by_degree, -> (name) { joins(:degree).where('degrees.name IN (?)', name)}
     scope :by_university, -> (university_type) { joins(:university).where('universities.university_type IN (?)', university_type)}
